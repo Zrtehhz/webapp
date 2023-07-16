@@ -55,10 +55,22 @@
 </head>
 <body>
   <div id="search-container">
-    <form action="https://www.google.fr/search" method="get">
-      <input type="text" name="q" placeholder="Recherche Google" required>
+    <form id="search-form" action="https://www.google.fr/search" method="get">
+      <input type="text" id="search-input" name="q" placeholder="Recherche Google" required>
       <input type="submit" value="Rechercher">
     </form>
   </div>
+
+  <script>
+    const form = document.getElementById('search-form');
+    const input = document.getElementById('search-input');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const searchQuery = input.value;
+      const url = `https://www.google.fr/search?q=${encodeURIComponent(searchQuery)}`;
+      window.location.href = url;
+    });
+  </script>
 </body>
 </html>
